@@ -165,7 +165,7 @@ namespace DatabaseDemo.Controllers
         public JsonResult CheckName(string name)
         {
             var students = db.Students.Where(i => i.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            return Json(students.Any(), JsonRequestBehavior.AllowGet);
+            return Json(!students.Any(), JsonRequestBehavior.AllowGet);
         }
     }
 }

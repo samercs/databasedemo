@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
+using Resources;
 
 namespace DatabaseDemo.Models
 {
@@ -9,7 +10,7 @@ namespace DatabaseDemo.Models
     {
         public int Id { get; set; }
         [Display(Name = "الاسم")]
-        [Remote("CheckName", "Students", ErrorMessage = "الرجاء ادخال اسم مختلف")]
+        [Remote("CheckName", "Students", ErrorMessageResourceType = typeof(Global), ErrorMessageResourceName = "ErrorName")]
         public string Name { get; set; }
         [Required(ErrorMessage = "الرجاء ادخال العمر")]
         public int Age { get; set; }
