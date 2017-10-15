@@ -6,16 +6,18 @@ using System.Web;
 
 namespace DatabaseDemo.Models
 {
-    public class ApplicationContext: DbContext
+    public class ApplicationContext : DbContext
     {
         public ApplicationContext() : base("DefaultConnection")
         {
-            
+            //this.Configuration.LazyLoadingEnabled = false;
+
         }
 
         public IDbSet<Student> Students { get; set; }
         public IDbSet<Course> Courses { get; set; }
         public IDbSet<Department> Departments { get; set; }
+        public IDbSet<FKStuCourse> FkStuCourses { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

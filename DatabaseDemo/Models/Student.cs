@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DatabaseDemo.Models
@@ -17,6 +18,8 @@ namespace DatabaseDemo.Models
         [ForeignKey("DeptId")]
         public virtual Department Dept { get; set; }
         
+
+        public virtual ICollection<FKStuCourse> FkStuCourses { get; set; }
 
         
     }

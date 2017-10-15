@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201710141353533_AddStudentCourseRelation.Designer.cs">
       <DependentUpon>201710141353533_AddStudentCourseRelation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710150525280_AddMayToMay.cs" />
+    <Compile Include="Migrations\201710150525280_AddMayToMay.Designer.cs">
+      <DependentUpon>201710150525280_AddMayToMay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
     <Compile Include="Models\Course.cs" />
@@ -221,6 +225,7 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Students\RegisterCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -250,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710141353533_AddStudentCourseRelation.resx">
       <DependentUpon>201710141353533_AddStudentCourseRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150525280_AddMayToMay.resx">
+      <DependentUpon>201710150525280_AddMayToMay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

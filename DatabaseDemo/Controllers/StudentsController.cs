@@ -47,7 +47,7 @@ namespace DatabaseDemo.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Student student)
@@ -127,6 +127,37 @@ namespace DatabaseDemo.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult RegisterCourse(int id)
+        {
+            var courses = db.Courses.ToList();
+            ViewBag.Courses = new SelectList(courses, "CourseId", "Name");
+
+            var model = new FKStuCourse();
+            return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult RegisterCourse(int id, FKStuCourse course)
+        {
+            var fkCourse = new FKStuCourse
+            {
+                StudentId = id,
+                CourseId = course.CourseId
+            };
+            var student = db.Students.Find(id);
+            student.FkStuCourses.Add(fkCourse);
+            db.SaveChanges();
+            return RedirectToAction("Details", new { id });
+        }
+
+        public ActionResult DeleteRegister(int studentId, int courseId)
+        {
+            var fkCourse = db.FkStuCourses.FirstOrDefault(i => i.CourseId == courseId && i.StudentId == studentId);
+            db.FkStuCourses.Remove(fkCourse);
+            db.SaveChanges();
+            return RedirectToAction("Details", new { id = studentId });
         }
     }
 }
