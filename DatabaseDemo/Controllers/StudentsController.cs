@@ -83,8 +83,10 @@ namespace DatabaseDemo.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Age,City,DeptName")] Student student)
+        public ActionResult Edit()
         {
+            var student = new Student();
+            UpdateModel(student);
             if (ModelState.IsValid)
             {
                 db.Entry(student).State = EntityState.Modified;
