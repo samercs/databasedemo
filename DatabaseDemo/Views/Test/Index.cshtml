@@ -1,0 +1,13 @@
+﻿@model  IList<DatabaseDemo.Models.Student>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@foreach (var std in Model)
+{
+    <div>
+        @std.Name
+    </div>
+}
+
