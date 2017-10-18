@@ -59,7 +59,12 @@ namespace DatabaseDemo.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            var depts = db.Departments.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
+            ViewBag.DeptList = depts.ToList();
             return View(student);
         }
 
