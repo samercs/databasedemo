@@ -8,7 +8,7 @@ using Resources;
 
 namespace DatabaseDemo.Models
 {
-    public class Student
+    public partial class Student: IValidatableObject
     {
         public int Id { get; set; }
         [DisplayName("الاسم")]
@@ -28,5 +28,12 @@ namespace DatabaseDemo.Models
         public virtual ICollection<FKStuCourse> FkStuCourses { get; set; }
 
 
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (DeptId == 1 && Age < 20)
+            {
+                yield return new ValidationResult("This student must have age more than 20 years.");
+            }
+        }
     }
 }
